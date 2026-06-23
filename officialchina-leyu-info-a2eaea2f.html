@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>乐鱼 · 稳定入口与说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: #1f2937;
+            background-color: #f7f9fc;
+        }
+
+        /* ---------- 深色 hero ---------- */
+        .hero {
+            background: linear-gradient(145deg, #0c1424 0%, #1a2639 70%, #1f2c41 100%);
+            color: #eef1f5;
+            padding: 4.2rem 1.8rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #f7f9fc;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scale(1.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #b4cdff;
+            font-weight: 600;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0.8rem auto 0;
+            color: #bcc9e0;
+            font-weight: 350;
+            padding: 0 0.5rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1.1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #cfdcf5;
+            backdrop-filter: blur(2px);
+        }
+
+        /* ---------- 正文区域 ---------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02), 0 4px 10px rgba(0, 20, 40, 0.04);
+            padding: 2.5rem 2.2rem;
+            margin: 2.5rem 0;
+            transition: box-shadow 0.25s;
+        }
+
+        .section:hover {
+            box-shadow: 0 14px 38px rgba(20, 40, 70, 0.06);
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #0d1a2b;
+            border-left: 4px solid #3a6bb5;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: #2c3e4f;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .feature-card {
+            background: #f3f6fd;
+            border-radius: 20px;
+            padding: 1.8rem 1.2rem 1.5rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .feature-card:hover {
+            background: #ecf1fa;
+            transform: translateY(-4px);
+        }
+
+        .feature-card .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+            color: #1b2b3f;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3e546a;
+            margin-bottom: 0;
+        }
+
+        /* 说明区卡片变体 */
+        .explain-block {
+            background: #fafcff;
+            border: 1px solid #e5ecf5;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .explain-block p {
+            margin-bottom: 0.6rem;
+        }
+
+        .explain-block strong {
+            color: #1a3e6b;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px dashed #dae2ed;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #0b1f34;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            color: #3b4f65;
+            font-size: 0.97rem;
+        }
+
+        .link-word {
+            color: #1f5e9e;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid rgba(31, 94, 158, 0.2);
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-word:hover {
+            color: #0b3b6b;
+            border-bottom: 1px solid #0b3b6b;
+        }
+
+        .footer-links {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin: 2.5rem 0 3rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .footer-links p {
+            color: #2d4057;
+            margin: 0.25rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a {
+            color: #1f5e9e;
+            text-decoration: none;
+            font-weight: 430;
+            border-bottom: 1px dotted #b0c7e0;
+        }
+
+        .footer-links a:hover {
+            color: #0d2f50;
+            border-bottom: 1px solid #0d2f50;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e9f2;
+            margin: 0.5rem 0 1rem;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 1.2rem 3.8rem;
+            }
+
+            .section {
+                padding: 1.8rem 1.2rem;
+                margin: 1.5rem 0;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .explain-block {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .footer-links {
+                padding: 1rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 0 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- hero -->
+    <header class="hero">
+        <h1>从稳定入口认识 <span>乐鱼</span></h1>
+        <p class="subtitle">一个持续维护、结构清晰的说明页，帮助你快速了解其功能定位与使用场景。</p>
+        <span class="badge">知识型 · 落地页</span>
+    </header>
+
+    <main class="container">
+
+        <!-- 优势区：特点卡片 -->
+        <section class="section">
+            <h2 class="section-title">为什么关注稳定性</h2>
+            <p>对于常用在线工具或平台而言，一个可靠的入口往往比复杂的功能更让人安心。<strong>乐鱼</strong>作为一类综合性服务标识，其页面结构、访问方式与内容组织都值得被客观了解。以下是它的一些基础特点：</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="emoji">🧭</span>
+                    <h3>入口明确</h3>
+                    <p>域名与路径保持长期指向，减少因地址变动带来的寻找成本。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="emoji">📂</span>
+                    <h3>信息分层</h3>
+                    <p>帮助页面、功能模块与说明内容有较清晰的分组，便于按需查阅。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="emoji">🔐</span>
+                    <h3>传输加密</h3>
+                    <p>采用 HTTPS 协议，在页面访问过程中提供基础的链路加密保护。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="emoji">📱</span>
+                    <h3>多端适应</h3>
+                    <p>页面布局对桌面与移动设备均做了适配，浏览体验相对一致。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区：稳定入口与页面说明 -->
+        <section class="section">
+            <h2 class="section-title">页面说明 · 从入口到内容</h2>
+
+            <div class="explain-block">
+                <p>当我们谈论“稳定入口”时，通常指的是一个长期有效、不轻易变动的网址。以 <a href="https://officialchina-leyu.com" class="link-word">乐鱼</a> 为例，其主页承载着导航、介绍与最新动态的聚合功能。用户无需反复搜索即可到达同一位置，这对习惯使用该服务的群体来说是一个显著优点。</p>
+                <p>从页面内容来看，它包含了服务概览、常见功能指引以及必要的条款说明。每一部分都采用模块化设计，既保证了信息的完整度，又避免了一屏内堆叠过多文字。这种结构对于新用户理解业务范围、老用户快速定位特定功能都较为友好。</p>
+                <p>值得留意的是，页面中的交互元素（如按钮、跳转链接）均带有明确的状态反馈。例如，悬停时颜色变化、点击后的视觉响应，这些细节提升了操作的可预测性，也降低了误触的概率。</p>
+            </div>
+
+            <p style="margin-top: 0.8rem;">除了上述基础结构，页面还提供了搜索入口与分类索引，进一步提升信息获取效率。如果你希望深入了解某一项功能，可以直接通过导航进入对应子页面，整个流程较为直接。</p>
+        </section>
+
+        <!-- FAQ 摘要区（非完整FAQ，仅摘要） -->
+        <section class="section">
+            <h2 class="section-title">常见疑问摘要</h2>
+
+            <div class="faq-item">
+                <span class="faq-q">❓ 乐鱼的页面是否会频繁变更地址？</span>
+                <span class="faq-a">根据近期记录，其主域与页面结构一直保持稳定。当然，任何在线服务都可能因维护或升级调整内容布局，但通常会通过站内通知或重定向加以说明。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">❓ 是否必须注册才能访问主要页面？</span>
+                <span class="faq-a">介绍页、帮助文档与部分公开内容无需登录即可浏览。部分功能或个性化设置才需要注册账户，这一点与大多数服务平台类似。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">❓ 页面加载速度受哪些因素影响？</span>
+                <span class="faq-a">除了本地网络状况，页面资源（图片、脚本）的大小与服务器响应时间都有关系。乐鱼的主页经过一定程度的优化，在普通宽带或 4G/5G 环境下通常能较快打开。</span>
+            </div>
+            <div style="margin-top: 0.8rem; font-size: 0.95rem; color: #3b5b7a;">
+                <p>以上摘要基于公开信息整理。如果你有更具体的使用疑问，建议直接通过页面内的联系方式或帮助中心获取确切答复。</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部链接区域 -->
+    <footer class="container">
+        <div class="footer-links">
+            <p>更多信息请参阅 <a href="https://officialchina-leyu.com">乐鱼</a> 主站 · 内容仅为客观说明，不构成任何诱导或承诺。</p>
+            <hr>
+            <p style="font-size: 0.88rem; color: #4e6680;">本页仅作介绍用途，不收集任何用户数据。如有疑问请直接联系对应平台。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
